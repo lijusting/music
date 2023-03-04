@@ -1,0 +1,18 @@
+.el-slider {
+    margin: 0 auto;
+    width: 290px;
+
+    .el-slider__runway {
+        height: 4px;
+        .el-slider__bar {
+            height: 4px;
+            background-color: #d33a31;
+        }
+        .el-slider__button-wrapper .el-tooltip {
+            width: 10px;
+            height: 10px;
+            border: 0;
+            background-color: #d33a31;
+        }
+    }
+}

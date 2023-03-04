@@ -1,0 +1,73 @@
+@keyframes toRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+.album {
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 100px;
+    text-align: center;
+    vertical-align: middle;
+    img.bar-support {
+        z-index: 3;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-10px);
+        width: 50px;
+        height: 50px;
+    }
+    .bar {
+        z-index: 2;
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-20px);
+        width: 250px;
+        height: 150px;
+        transform-origin: left top;
+        transition: all 0.5s;
+    }
+    .turn-left {
+        transform: rotate(-25deg);
+    }
+    .turn-right {
+        transform: rotate(25deg);
+    }
+    .vinyl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        margin-top: 125px;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background-color: #000;
+
+        .cover {
+            width: 375px;
+            height: 375px;
+            border-radius: 50%;
+            animation: toRotate 20s linear infinite;
+        }
+
+        .cover-playing {
+            animation-play-state: running;
+        }
+        .cover-paused {
+            animation-play-state: paused;
+        }
+    }
+}

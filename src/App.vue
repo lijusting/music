@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  //在根组件.vue中添加如下代码 app.vue
+  created() {
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.setItem("list", JSON.stringify(this.$store.state));
+    });
+    try {
+      sessionStorage.getItem("list") &&
+        this.$store.replaceState(
+          Object.assign(
+            {},
+            this.$store.state,
+            JSON.parse(sessionStorage.getItem("list"))
+          )
+        );
+    } catch (err) {
+      console.log(err);
+    }
+    sessionStorage.removeItem("list");
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
